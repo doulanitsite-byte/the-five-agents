@@ -1,0 +1,9 @@
+# API keys — never commit
+.mcp.json
+
+# Generated outputs — large files, not versioned
+outputs/
+
+# OS
+.DS_Store
+Thumbs.db

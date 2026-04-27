@@ -1,7 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm init -y)"
+      "Bash(npm init -y)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(uvx --version)",
+      "Bash(pip show nanobanana-mcp-server)",
+      "Bash(where python)",
+      "Bash(where python3)",
+      "Bash(where py)",
+      "Bash(py --version)",
+      "Bash(/c/Users/doula/AppData/Local/Microsoft/WindowsApps/python3.exe --version)",
+      "Bash(/c/Users/doula/AppData/Local/Microsoft/WindowsApps/python.exe --version)",
+      "Bash(node --version)"
     ]
   }
 }
