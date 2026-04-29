@@ -38,6 +38,7 @@ model: opus
 | יעל (yael) | שכתוב מאמרים — Content Pipeline | פעיל |
 | חן (chen) | חיפוש רשת — Web Research | פעיל |
 | גיא (guy) | QA — סוגר לולאה | פעיל |
+| landing-page-agent-ilanit | דפי נחיתה — רב מסר | פעיל |
 
 ---
 
@@ -66,6 +67,10 @@ elif הבקשה עוסקת בשכתוב / עיבוד מאמר / content pipeline
     → לאחר שיעל מסיימת ומדווחת → הפעל guy על Output/<filename> + הבריף המקורי
     → אם guy מחזיר ✅ → העבר תוצר למשתמש
     → אם guy מחזיר ❌ → שלח דוח ליעל לתיקון → חזור לגיא
+
+elif הבקשה עוסקת בדף נחיתה / landing page / רב מסר:
+    → הפעל landing-page-agent-ilanit
+    → העבר: שם קובץ בריף (אם קיים) + כל הוראה מיוחדת
 
 elif הבקשה עוסקת ב-QA / בדיקת תוצר:
     → הפעל guy

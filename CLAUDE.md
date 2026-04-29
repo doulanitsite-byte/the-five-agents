@@ -41,12 +41,14 @@ Do not handle any user request directly — always delegate to מיכל first.
 | יעל | `.claude/agents/yael.md` | כתיבת תוכן — שכתוב מאמרים |
 | חן | `.claude/agents/chen.md` | חיפוש רשת — Web Research |
 | גיא | `.claude/agents/guy.md` | QA — סוגר לולאה |
+| landing-page-agent-ilanit | `.claude/agents/landing-page-agent-ilanit.md` | דפי נחיתה — רב מסר |
 
 ## Skills
 
 | שם | קובץ | שימוש |
 |----|------|-------|
 | nano-banana-2 | `.claude/skills/nano-banana-2/SKILL.md` | יצירת תמונות עם Gemini 3.1 Flash Image |
+| landing-page-ilanit | `.claude/skills/landing-page-ilanit/SKILL.md` | מבנה + DNA לדפי נחיתה של אילנית |
 
 ## MCP Servers
 
@@ -68,3 +70,4 @@ Do not handle any user request directly — always delegate to מיכל first.
 - Content Pipeline: `Content/` (גלם) → `Output/` (תוצר) → `Content/Ready/` (ארכיב)
 - Memory Pipeline: `Memory/searches.md` ← יומן חיפושים של חן
 - QA Pipeline: `Output/` → גיא → `QA_Reports/` → מיכל → משתמש
+- Landing Page Pipeline: `LandingPages/Briefs/` → landing-page-agent-ilanit → `LandingPages/Output/` → גיא → מיכל
