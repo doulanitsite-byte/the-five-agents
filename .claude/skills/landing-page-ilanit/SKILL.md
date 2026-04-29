@@ -13,6 +13,25 @@ This skill is invoked by `landing-page-agent-ilanit` at the start of every landi
 
 ---
 
+## ⚠️ חוק קריטי — סגנון כתיבה (עדיפות עליונה)
+
+**לפני כל כתיבה — קרא את כל הקבצים ב-`.claude/skills/writing-skills/examples/`.**
+
+הדוגמאות הן הסמכות הגבוהה ביותר בסקיל הזה.
+
+כשיש פער בין החוקים, המבנה, או ההנחיות — **הדוגמאות מנצחות.**
+
+כל משפט שנכתב עובר בדיקה אחת:
+**"האם זה יכול להופיע בדוגמאות של אילנית?"**
+אם לא — לכתוב מחדש.
+
+אסור לכתוב:
+- ניסוחים שנשמעים "טובים" אבל לא מופיעים בסגנון הזה
+- ניסוחים כלליים שיכולים להופיע בכל דף נחיתה
+- ניסוחים שנשמעים כתובים ולא מדוברים
+
+---
+
 ## שלב 0 — טעינת הסגנון האמיתי
 
 לפני שאתה כותב מילה אחת, קרא את כל הקבצים ב-`.claude/skills/writing-skills/examples/`.
@@ -147,13 +166,77 @@ CTA
 
 ---
 
-## הנחיות טכניות — רב מסר
+## פורמט פלט — HTML + CSS מוכן לרב מסר
 
-- כל סקשן מתויג עם `<!-- section: <name> -->` לזיהוי הפלטפורמה
-- כפתורי CTA: `[BUTTON: טקסט הכפתור]`
-- שדות טופס: `[FIELD: שם]`, `[FIELD: טלפון]`, `[FIELD: אימייל]`
-- כותרת Hero ראשית: עד ~80 תווים
-- כל הטקסט: עברית, RTL
+### חובה
+הסוכן מייצר **קוד HTML + CSS בפועל** — לא Markdown, לא תיאור מבנה.
+הפלט הוא קובץ `.html` אחד מוכן להדבקה ברב מסר החדש.
+
+### צבעי מותג
+```css
+:root {
+  --gold:   #f1a208;
+  --purple: #402160;
+  --coral:  #c8553d;
+  --cream:  #f5f5ef;
+}
+```
+
+### מבנה HTML מחייב
+
+```
+DOCTYPE + <html dir="rtl" lang="he">
+  <head> — charset, viewport, כל ה-CSS inline ב-<style>
+  <body>
+    section.hero-visual   ← תמונה + overlay + שם + הבטחה + CTA
+    section.hero-text     ← טקסט שיחתי, רקע cream
+    section.pain          ← כאב + CTA, רקע לבן
+    section.testimonials-1← רשת עדויות (3–6 תמונות), רקע cream
+    section.reflection    ← שיקוף, רקע לבן
+    section.myth-break    ← שבירת מיתוס + CTA, רקע purple
+    section.testimonials-2← רשת עדויות (3–6 תמונות), רקע cream
+    section.deepening     ← העמקה, רקע לבן
+    section.bridge        ← מעבר לפתרון + CTA, רקע cream
+    section.offer         ← הצגת התוכנית, רקע לבן
+    section.testimonials-3← רשת עדויות (3–6 תמונות), רקע cream
+    section.authority     ← אוטוריטה, רקע לבן
+    section.price         ← מחיר + placeholder טיימר, רקע purple
+    section.final-cta     ← CTA סיום + טופס, רקע gold
+```
+
+### כללי CSS
+- רספונסיבי: `max-width: 680px; margin: auto;` לכל התוכן
+- מובייל: `@media (max-width: 600px)` לכל גריד
+- Hero: `min-height: 100vh` עם `background-image` + pseudo-element overlay
+- כפתורים: padding `16px 40px`, border-radius `8px`, font-weight bold
+- עדויות: CSS Grid, `grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))`
+- כל הטקסט: RTL, `font-family: 'Heebo', sans-serif` עם Google Fonts fallback
+- ללא JavaScript מורכב
+
+### מבנה כרטיס עדות
+```html
+<div class="testimonial-card">
+  <img src="[PHOTO_URL]" alt="שם הלקוחה" />
+  <p class="testimonial-text">"[טקסט העדות — תוצאה קונקרטית]"</p>
+  <span class="testimonial-name">[שם], [תפקיד]</span>
+</div>
+```
+
+### placeholder טיימר (ללא JS)
+```html
+<div class="timer-placeholder">
+  <p class="timer-label">ההרשמה נסגרת בעוד:</p>
+  <div class="timer-display">
+    <span class="timer-unit">00<small>ימים</small></span>
+    <span class="timer-unit">00<small>שעות</small></span>
+    <span class="timer-unit">00<small>דקות</small></span>
+  </div>
+  <!-- הוסיפי כאן את קוד הטיימר של רב מסר -->
+</div>
+```
+
+### שמירה
+קובץ פלט: `LandingPages/Output/YYYYMMDD_<slug>.html`
 
 ---
 
